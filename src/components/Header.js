@@ -6,11 +6,12 @@ function Header({ currentView, setCurrentView }) {
     <header className="header">
       <div className="header-content">
         <pre className="logo">
-{`  ___  ___ ___  __ _ _   _ 
- / _ \\/ __/ __|/ _\` | | | |
-|  __/\\__ \\__ \\ (_| | |_| |
- \\___||___/___/\\__,_|\\__, |
-                     |___/ `}
+{`   _
+  (_) ___  ___ ___  __ _ _   _
+  | |/ _ \\/ __/ __|/ _\` | | | |
+  | |  __/\\__ \\__ \\ (_| | |_| |
+ _/ |\\___||___/___/\\__,_|\\__, |
+|__/                     |___/ `}
         </pre>
         <nav className="nav">
           <button 
