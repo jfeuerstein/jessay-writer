@@ -1,0 +1,117 @@
+.editor {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.editor-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.word-count {
+  margin-left: auto;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title-input {
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  border-bottom: 1px solid #333;
+  padding: 0.5rem 0;
+  background: transparent;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+}
+
+.title-input:focus {
+  border-bottom-color: #e0e0e0;
+}
+
+.content-input {
+  min-height: 60vh;
+  border: none;
+  resize: vertical;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  background: transparent;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+  padding: 0;
+}
+
+.content-input:focus {
+  outline: none;
+}
+
+/* modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #0a0a0a;
+  border: 2px solid #e0e0e0;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-art {
+  color: #e0e0e0;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal-text {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #999;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .title-input {
+    font-size: 1.5rem;
+  }
+  
+  .content-input {
+    font-size: 1rem;
+  }
+  
+  .editor-controls {
+    flex-wrap: wrap;
+  }
+}

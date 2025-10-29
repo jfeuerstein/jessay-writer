@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# essay writer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+a minimalist, distraction-free essay writing app with ascii art aesthetic.
 
-## Available Scripts
+## features
 
-In the project directory, you can run:
+- **distraction-free editor** - clean interface for writing essays, notes, journal entries, and songs
+- **publish & store** - save your work to your collection
+- **browse essays** - view all your published work
+- **two-toned aesthetic** - simple black & grey with ascii art decorations
+- **localStorage persistence** - essays saved locally in your browser
 
-### `npm start`
+## setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. clone this repo:
+```bash
+git clone https://github.com/joshfeuerstein/essay-writer.git
+cd essay-writer
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. install dependencies:
+```bash
+npm install
+```
 
-### `npm test`
+3. run locally:
+```bash
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## deployment to github pages
 
-### `npm run build`
+1. update the `homepage` field in `package.json` with your username:
+```json
+"homepage": "https://YOUR-USERNAME.github.io/essay-writer"
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. deploy:
+```bash
+npm run deploy
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+this will build the app and push it to the `gh-pages` branch.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. enable github pages:
+   - go to your repo settings
+   - navigate to "pages" section
+   - set source to `gh-pages` branch
+   - save
 
-### `npm run eject`
+your app will be live at `https://YOUR-USERNAME.github.io/essay-writer`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## future enhancements (optional)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+to add git commits for published essays, you could:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. set up a backend service (netlify functions, vercel, etc.)
+2. use github api to commit essays to a `/essays` folder
+3. each publish would create a new markdown file
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+this would require:
+- github personal access token
+- backend endpoint to handle commits
+- updating the publish function to call your api
 
-## Learn More
+## tech stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- react 18
+- vanilla css
+- localStorage for data persistence
+- gh-pages for deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## usage
 
-### Code Splitting
+**write mode:**
+- enter title and content
+- word count displayed in real-time
+- click "publish" to save
+- click "clear" to start over
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**browse mode:**
+- see all published essays
+- click any essay to read in full
+- delete essays if needed
 
-### Analyzing the Bundle Size
+## styling notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+the app uses:
+- courier new monospace font
+- #0a0a0a background (near black)
+- #e0e0e0 text (light grey)
+- ascii box drawing characters for borders
+- minimal ui elements
 
-### Making a Progressive Web App
+all text is lowercase for aesthetic consistency.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+made with ♥ and courier new
