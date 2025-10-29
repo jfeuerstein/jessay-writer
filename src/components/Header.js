@@ -5,13 +5,17 @@ function Header({ currentView, setCurrentView }) {
   return (
     <header className="header">
       <div className="header-content">
-        <pre className="logo">
-{`  ___  ___ ___  __ _ _   _ 
- / _ \\/ __/ __|/ _\` | | | |
-|  __/\\__ \\__ \\ (_| | |_| |
- \\___||___/___/\\__,_|\\__, |
-                     |___/ `}
-        </pre>
+        <div className="logo-container">
+          <pre className="logo">
+{`   _
+  (_) ___  ___ ___  __ _ _   _
+  | |/ _ \\/ __/ __|/ _\` | | | |
+  | |  __/\\__ \\__ \\ (_| | |_| |
+ _/ |\\___||___/___/\\__,_|\\__, |
+|__/                     |___/ `}
+          </pre>
+          <p className="tagline">(its a portmantaeu of josh and essay)</p>
+        </div>
         <nav className="nav">
           <button 
             className={currentView === 'editor' ? 'active' : ''}
