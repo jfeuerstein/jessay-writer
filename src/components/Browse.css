@@ -58,6 +58,7 @@
   font-size: 0.5rem;
   line-height: 1;
   font-family: 'Courier New', monospace;
+  transition: color 0.2s;
 }
 
 .essay-card:hover .card-border-top,
@@ -69,6 +70,7 @@
   padding: 1rem;
   border-left: 1px solid #333;
   border-right: 1px solid #333;
+  transition: border-color 0.2s;
 }
 
 .essay-card:hover .card-content {
