@@ -14,6 +14,12 @@
   gap: 1rem;
 }
 
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .logo {
   font-size: 0.65rem;
   line-height: 1.2;
@@ -21,6 +27,14 @@
   margin: 0;
   font-family: 'Courier New', monospace;
   white-space: pre;
+}
+
+.tagline {
+  font-size: 0.7rem;
+  color: #888;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-style: italic;
 }
 
 .nav {
