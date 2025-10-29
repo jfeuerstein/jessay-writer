@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/jessay-writer/static/css/main.6b093901.css",
+    "main.js": "/jessay-writer/static/js/main.b1234755.js",
+    "index.html": "/jessay-writer/index.html",
+    "main.6b093901.css.map": "/jessay-writer/static/css/main.6b093901.css.map",
+    "main.b1234755.js.map": "/jessay-writer/static/js/main.b1234755.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b093901.css",
+    "static/js/main.b1234755.js"
+  ]
+}
