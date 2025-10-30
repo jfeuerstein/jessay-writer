@@ -27,6 +27,11 @@
   margin: 0;
   font-family: 'Courier New', monospace;
   white-space: pre;
+  transition: all 0.3s ease;
+}
+
+.logo-secret {
+  animation: rainbow 2s linear infinite, pulse 1s ease-in-out infinite;
 }
 
 .tagline {
@@ -35,6 +40,27 @@
   margin: 0;
   font-family: 'Courier New', monospace;
   font-style: italic;
+  transition: all 0.3s ease;
+}
+
+.tagline-secret {
+  color: #e0e0e0;
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(224, 224, 224, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(224, 224, 224, 0.8); }
 }
 
 .nav {
