@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Editor.css';
+import RichTextEditor from './RichTextEditor';
 
 function Editor({ onPublish }) {
   const [title, setTitle] = useState('');
@@ -38,6 +39,12 @@ function Editor({ onPublish }) {
     }
   };
 
+  const getWordCount = () => {
+    // Strip HTML tags for word count
+    const text = content.replace(/<[^>]*>/g, '').trim();
+    return text ? text.split(/\s+/).length : 0;
+  };
+
   return (
     <div className="editor">
       <div className="editor-controls">
@@ -48,7 +55,7 @@ function Editor({ onPublish }) {
           └─┘ clear
         </button>
         <div className="word-count">
-          {content.trim() ? content.trim().split(/\s+/).length : 0} words
+          {getWordCount()} words
         </div>
       </div>
       
@@ -61,11 +68,11 @@ function Editor({ onPublish }) {
           onChange={(e) => setTitle(e.target.value)}
         />
         
-        <textarea
+        <RichTextEditor
           className="content-input"
           placeholder="start writing..."
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={setContent}
           autoFocus
         />
       </div>
