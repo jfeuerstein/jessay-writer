@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Editor.css';
+import RichTextEditor from './RichTextEditor';
 
 function Editor({ onPublish, streak }) {
   const [title, setTitle] = useState('');
@@ -140,6 +141,10 @@ function Editor({ onPublish, streak }) {
       clearTimeout(clearButtonPressTimer);
     }
     setClearButtonHover(false);
+  const getWordCount = () => {
+    // Strip HTML tags for word count
+    const text = content.replace(/<[^>]*>/g, '').trim();
+    return text ? text.split(/\s+/).length : 0;
   };
 
   return (
@@ -173,28 +178,25 @@ function Editor({ onPublish, streak }) {
               (yes, we're counting)
             </span>
           )}
+        <div className="word-count">
+          {getWordCount()} words
         </div>
       </div>
       
       <div className="editor-container">
-        <div className="title-section">
-          <input
-            type="text"
-            className="title-input"
-            placeholder="untitled..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          {titleEasterEgg && (
-            <span className="title-easter-egg">{titleEasterEgg}</span>
-          )}
-        </div>
-
-        <textarea
+        <input
+          type="text"
+          className="title-input"
+          placeholder="untitled..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        
+        <RichTextEditor
           className="content-input"
           placeholder="start writing..."
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={setContent}
           autoFocus
         />
       </div>
