@@ -3,9 +3,21 @@ import './Header.css';
 
 function Header({ currentView, setCurrentView, user, onAuthClick }) {
   const [logoClicks, setLogoClicks] = useState(0);
-  const [showSecret, setShowSecret] = useState(false);
+  const [showEasterEgg, setShowEasterEgg] = useState(false);
+  const [currentEasterEggIndex, setCurrentEasterEggIndex] = useState(null);
 
-  const logoVariations = [
+  const normalLogo = {
+    art: `     _
+    | |
+    | | ___  ___ ___  __ _ _   _
+ _  | |/ _ \\/ __/ __|/ _\` | | | |
+| |_| |  __/\\__ \\__ \\ (_| | |_| |
+ \\___/ \\___||___/___/\\__,_|\\__, |
+                            |___/`,
+    tagline: "(daily essays, daily progress)"
+  };
+
+  const easterEggVariations = [
     // Hunter x Hunter
     {
       art: `     ★                    ★
@@ -119,29 +131,35 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   ];
 
   const handleLogoClick = () => {
-    const newCount = logoClicks + 1;
-    setLogoClicks(newCount);
-
-    if (newCount === 7) {
-      setShowSecret(true);
-      setTimeout(() => setShowSecret(false), 5000);
-    }
-
-    if (newCount >= logoVariations.length) {
+    if (showEasterEgg) {
+      // If easter egg is showing, return to normal logo
+      setShowEasterEgg(false);
+      setCurrentEasterEggIndex(null);
       setLogoClicks(0);
+    } else {
+      // Increment click counter
+      const newCount = logoClicks + 1;
+      setLogoClicks(newCount);
+
+      // Every 5 clicks, show a random easter egg
+      if (newCount === 5) {
+        const randomIndex = Math.floor(Math.random() * easterEggVariations.length);
+        setCurrentEasterEggIndex(randomIndex);
+        setShowEasterEgg(true);
+      }
     }
   };
 
-  const currentLogo = logoVariations[logoClicks];
+  const currentLogo = showEasterEgg ? easterEggVariations[currentEasterEggIndex] : normalLogo;
 
   return (
     <header className="header">
       <div className="header-content">
         <div className="logo-container" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
-          <pre className={`logo ${showSecret ? 'logo-secret' : ''}`}>
+          <pre className="logo">
 {currentLogo.art}
           </pre>
-          <p className={`tagline ${showSecret ? 'tagline-secret' : ''}`}>
+          <p className="tagline">
             {currentLogo.tagline}
           </p>
         </div>
