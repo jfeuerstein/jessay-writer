@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Browse.css';
 
-function Browse({ essays, onDelete }) {
+function Browse({ essays, onDelete, user }) {
   const [selectedEssay, setSelectedEssay] = useState(null);
 
   const formatDate = (isoString) => {
@@ -42,14 +42,16 @@ function Browse({ essays, onDelete }) {
           className="essay-content"
           dangerouslySetInnerHTML={{ __html: selectedEssay.content }}
         />
-        <div className="essay-actions">
-          <button 
-            onClick={() => handleDelete(selectedEssay.id, selectedEssay.title)}
-            className="delete-button"
-          >
-            ✗ delete essay
-          </button>
-        </div>
+        {user && (
+          <div className="essay-actions">
+            <button
+              onClick={() => handleDelete(selectedEssay.id, selectedEssay.title)}
+              className="delete-button"
+            >
+              ✗ delete essay
+            </button>
+          </div>
+        )}
       </div>
     );
   }

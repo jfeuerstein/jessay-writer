@@ -3,18 +3,57 @@ import './App.css';
 import Editor from './components/Editor';
 import Browse from './components/Browse';
 import Header from './components/Header';
+import Auth from './components/Auth';
+import { auth, db } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import {
+  collection,
+  addDoc,
+  deleteDoc,
+  doc,
+  query,
+  orderBy,
+  onSnapshot
+} from 'firebase/firestore';
 
 function App() {
-  const [currentView, setCurrentView] = useState('editor');
+  const [currentView, setCurrentView] = useState('browse'); // Default to browse mode
   const [essays, setEssays] = useState([]);
   const [publishStreak, setPublishStreak] = useState(0);
+  const [user, setUser] = useState(null);
+  const [showAuth, setShowAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
 
+  // Listen to authentication state changes
   useEffect(() => {
-    // Load essays from localStorage on mount
-    const savedEssays = localStorage.getItem('essays');
-    if (savedEssays) {
-      setEssays(JSON.parse(savedEssays));
-    }
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // Listen to Firestore essays collection
+  useEffect(() => {
+    const q = query(collection(db, 'essays'), orderBy('publishedAt', 'desc'));
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const essaysData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setEssays(essaysData);
+    }, (error) => {
+      console.error('Error loading essays:', error);
+      // Fallback to localStorage if Firestore fails
+      const savedEssays = localStorage.getItem('essays');
+      if (savedEssays) {
+        setEssays(JSON.parse(savedEssays));
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   // Calculate publish streak
@@ -61,34 +100,89 @@ function App() {
     setPublishStreak(calculateStreak());
   }, [essays]);
 
-  const publishEssay = (essay) => {
-    const newEssay = {
-      ...essay,
-      id: Date.now(),
-      publishedAt: new Date().toISOString(),
-    };
-    const updatedEssays = [newEssay, ...essays];
-    setEssays(updatedEssays);
-    localStorage.setItem('essays', JSON.stringify(updatedEssays));
-    return newEssay;
+  const publishEssay = async (essay) => {
+    if (!user) {
+      setShowAuth(true);
+      return null;
+    }
+
+    try {
+      const newEssay = {
+        ...essay,
+        publishedAt: new Date().toISOString(),
+        userId: user.uid,
+        userEmail: user.email
+      };
+
+      const docRef = await addDoc(collection(db, 'essays'), newEssay);
+      return { id: docRef.id, ...newEssay };
+    } catch (error) {
+      console.error('Error publishing essay:', error);
+      // Fallback to localStorage
+      const newEssay = {
+        ...essay,
+        id: Date.now(),
+        publishedAt: new Date().toISOString(),
+      };
+      const updatedEssays = [newEssay, ...essays];
+      setEssays(updatedEssays);
+      localStorage.setItem('essays', JSON.stringify(updatedEssays));
+      return newEssay;
+    }
   };
 
-  const deleteEssay = (id) => {
-    const updatedEssays = essays.filter(e => e.id !== id);
-    setEssays(updatedEssays);
-    localStorage.setItem('essays', JSON.stringify(updatedEssays));
+  const deleteEssay = async (id) => {
+    if (!user) {
+      setShowAuth(true);
+      return;
+    }
+
+    try {
+      await deleteDoc(doc(db, 'essays', id));
+    } catch (error) {
+      console.error('Error deleting essay:', error);
+      // Fallback to localStorage
+      const updatedEssays = essays.filter(e => e.id !== id);
+      setEssays(updatedEssays);
+      localStorage.setItem('essays', JSON.stringify(updatedEssays));
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="App">
+        <div className="loading">loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="App">
-      <Header currentView={currentView} setCurrentView={setCurrentView} />
+      <Header
+        currentView={currentView}
+        setCurrentView={setCurrentView}
+        user={user}
+        onAuthClick={() => setShowAuth(true)}
+      />
       <main className="main-content">
         {currentView === 'editor' ? (
-          <Editor onPublish={publishEssay} streak={publishStreak} />
+          <Editor
+            onPublish={publishEssay}
+            streak={publishStreak}
+            user={user}
+            onAuthClick={() => setShowAuth(true)}
+          />
         ) : (
-          <Browse essays={essays} onDelete={deleteEssay} />
+          <Browse
+            essays={essays}
+            onDelete={deleteEssay}
+            user={user}
+          />
         )}
       </main>
+      {showAuth && (
+        <Auth user={user} onClose={() => setShowAuth(false)} />
+      )}
     </div>
   );
 }
