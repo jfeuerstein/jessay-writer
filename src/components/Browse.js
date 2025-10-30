@@ -6,11 +6,15 @@ function Browse({ essays, onDelete }) {
 
   const formatDate = (isoString) => {
     const date = new Date(isoString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric' 
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
     });
+  };
+
+  const stripHtml = (html) => {
+    return html.replace(/<[^>]*>/g, '');
   };
 
   const handleDelete = (id, title) => {
@@ -34,11 +38,10 @@ function Browse({ essays, onDelete }) {
             published {formatDate(selectedEssay.publishedAt)}
           </div>
         </div>
-        <div className="essay-content">
-          {selectedEssay.content.split('\n').map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
-        </div>
+        <div
+          className="essay-content"
+          dangerouslySetInnerHTML={{ __html: selectedEssay.content }}
+        />
         <div className="essay-actions">
           <button 
             onClick={() => handleDelete(selectedEssay.id, selectedEssay.title)}
@@ -82,8 +85,8 @@ function Browse({ essays, onDelete }) {
                 <h3 className="card-title">{essay.title}</h3>
                 <div className="card-date">{formatDate(essay.publishedAt)}</div>
                 <div className="card-preview">
-                  {essay.content.substring(0, 150)}
-                  {essay.content.length > 150 ? '...' : ''}
+                  {stripHtml(essay.content).substring(0, 150)}
+                  {stripHtml(essay.content).length > 150 ? '...' : ''}
                 </div>
               </div>
               <div className="card-border-bottom">└{'─'.repeat(50)}┘</div>

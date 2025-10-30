@@ -132,6 +132,43 @@
   margin-bottom: 1.5rem;
 }
 
+/* Rich text formatting in essay content */
+.essay-content b,
+.essay-content strong {
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.essay-content i,
+.essay-content em {
+  font-style: italic;
+  color: #e0e0e0;
+}
+
+.essay-content u {
+  text-decoration: underline;
+  text-decoration-color: #666;
+}
+
+.essay-content strike,
+.essay-content s {
+  text-decoration: line-through;
+  text-decoration-color: #666;
+  opacity: 0.7;
+}
+
+.essay-content a {
+  color: #999;
+  text-decoration: underline;
+  text-decoration-color: #555;
+  transition: all 0.2s;
+}
+
+.essay-content a:hover {
+  color: #e0e0e0;
+  text-decoration-color: #999;
+}
+
 .essay-actions {
   padding-top: 2rem;
   border-top: 1px solid #333;

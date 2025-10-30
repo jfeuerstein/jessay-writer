@@ -1,0 +1,87 @@
+.rich-text-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.rich-text-wrapper [contenteditable] {
+  outline: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Placeholder styling */
+.rich-text-wrapper [contenteditable]:empty:before {
+  content: attr(data-placeholder);
+  color: #555;
+  pointer-events: none;
+}
+
+/* Format toolbar */
+.format-toolbar {
+  position: absolute;
+  display: flex;
+  gap: 0.25rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 0.25rem;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.format-toolbar button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  min-width: auto;
+  background: transparent;
+  border: 1px solid #333;
+  color: #999;
+  transition: all 0.1s;
+}
+
+.format-toolbar button:hover {
+  background: #333;
+  color: #e0e0e0;
+  border-color: #666;
+}
+
+/* Rich text formatting styles */
+.rich-text-wrapper [contenteditable] b,
+.rich-text-wrapper [contenteditable] strong {
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.rich-text-wrapper [contenteditable] i,
+.rich-text-wrapper [contenteditable] em {
+  font-style: italic;
+  color: #e0e0e0;
+}
+
+.rich-text-wrapper [contenteditable] u {
+  text-decoration: underline;
+  text-decoration-color: #666;
+}
+
+.rich-text-wrapper [contenteditable] strike,
+.rich-text-wrapper [contenteditable] s {
+  text-decoration: line-through;
+  text-decoration-color: #666;
+  opacity: 0.7;
+}
+
+.rich-text-wrapper [contenteditable] a {
+  color: #999;
+  text-decoration: underline;
+  text-decoration-color: #555;
+  transition: all 0.2s;
+}
+
+.rich-text-wrapper [contenteditable] a:hover {
+  color: #e0e0e0;
+  text-decoration-color: #999;
+}
+
+/* Keep monospace feel */
+.rich-text-wrapper [contenteditable] * {
+  font-family: 'Courier New', monospace;
+}
