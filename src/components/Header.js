@@ -6,86 +6,108 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   const [showSecret, setShowSecret] = useState(false);
 
   const logoVariations = [
-    // Original
+    // Hunter x Hunter
     {
-      art: `   _
+      art: `   _          ★
   (_) ___  ___ ___  __ _ _   _
   | |/ _ \\/ __/ __|/ _\` | | | |
   | |  __/\\__ \\__ \\ (_| | |_| |
  _/ |\\___||___/___/\\__,_|\\__, |
 |__/                     |___/ `,
-      tagline: "(its a portmantaeu of josh and essay)"
+      tagline: "(this isn't the hunter exam)"
     },
-    // Variation 1: Spaced out
+    // Seinfeld
     {
       art: `   _
   (_) ___  ___  ___  __ _ _   _
   | |/ _ \\/ __|/ __|/ _\` | | | |
   | | (_) \\__ \\ (__| (_| | |_| |
  _/ |\\___/|___/\\___|\\__,_|\\__, |
-|__/                      |___/ `,
-      tagline: "(j o s h   e s s a y)"
+|__/                      |___/
+    [bass riff plays]`,
+      tagline: "(an essay about nothing)"
     },
-    // Variation 2: Different style
+    // Avatar: The Last Airbender
     {
-      art: ` __ _  ___ ___ ___  __ _ _   _
-|  \\ \\/ _/ __/ __|/ _\` | | | |
-| |\\ \\  _\\__ \\__ \\ (_| | |_| |
-|_/ \\_\\_||___/___/\\__,_|\\__, |
+      art: ` __ _  ___ ___ ___  __ _ _   _  ≋
+|  \\ \\/ _/ __/ __|/ _\` | | | | ☁
+| |\\ \\  _\\__ \\__ \\ (_| | |_| | ▲
+|_/ \\_\\_||___/___/\\__,_|\\__, | ※
                         |___/ `,
-      tagline: "(minimal mode activated)"
+      tagline: "(still working on the avatar state)"
     },
-    // Variation 3: All caps
+    // Stardew Valley
     {
-      art: `     ___ ___ ___ ___   ___   __ __
+      art: `  ✿  ___ ___ ___ ___   ___   __ __
   _ | | __/ __/ __| /_\\ \\ \\ / /
  | || | _|\\__ \\__ \\/ _ \\ \\ V /
-  \\__/|___|___/___/_/ \\_\\ |_|  `,
-      tagline: "(why are we yelling?)"
+  \\__/|___|___/___/_/ \\_\\ |_|
+    [spring, day 1]`,
+      tagline: "(no sprinklers for writer's block)"
     },
-    // Variation 4: Tiny
+    // Minecraft
     {
       art: ` _
-(_)___ ___ ___ __ _ _ _
-| / -_|_-<_-</ _\` | | |
-|_\\___/__/__/\\__,_|_|_|`,
-      tagline: "(smol writer)"
+▓▒░___ ___ ___ __ _ _ _
+▓ / -_|_-<_-</ _\` | | |
+▓▒___/__/__/\\__,_|_|_|
+    [survival mode]`,
+      tagline: "(no creative mode here)"
     },
-    // Variation 5: Blocky
+    // Harry Potter
     {
-      art: `     █ ███ ███ ███  █  █ █
+      art: `  ϟ  █ ███ ███ ███  █  █ █
      █ █▄  █▄  █▄  █▄█ █ █
 █ █  █ █▄▄ ▄▄█ ▄▄█ █ █ ▀▄▀
- ▀  █▀                     `,
-      tagline: "(block party mode)"
+ ▀  █▀
+    platform 9¾`,
+      tagline: "(they don't teach this at hogwarts)"
     },
-    // Variation 6: Matrix-y
+    // Into the Spiderverse
     {
-      art: `   ╔╦╗
- ┬┌─┐┌─┐┌─┐┌─┐┬ ┬
- │├┤ └─┐└─┐├─┤└┬┘
-└┘└─┘└─┘└─┘┴ ┴ ┴ `,
-      tagline: "(neo, is that you?)"
+      art: `   ╔╦╗    ╱╲
+ ┬┌─┐┌─┐┌─┐┌─┐┬ ┬  ╱  ╲
+ │├┤ └─┐└─┐├─┤└┬┘ ╱    ╲
+└┘└─┘└─┘└─┘┴ ┴ ┴  ╲    ╱
+                    ╲  ╱
+                     ╲╱`,
+      tagline: "(wrong kind of web)"
     },
-    // Variation 7: The secret
+    // Zelda: Breath of the Wild
     {
-      art: ` _            _     _
-(_) ___  ___| |__ ( )___
-| |/ _ \\/ __| '_ \\|// __|
-| | (_) \\__ \\ | | | \\__ \\
-| |\\___/|___/_| |_| |___/
-\\__|
-     ___ ___ ___ _ __ ___ _   _
- _  / __/ __/ _ \\ '__/ _ \\ | | |
-| | \\__ \\  __/ | |  __/ |_| |
-| | |___/\\___|_|  \\___|\\__, |
-|_|                    |___/
- ___ ___ ___ _ __ ___ _   _
-/ __/ __/ _ \\ '__/ _ \\ | | |
-\\__ \\  __/ | |  __/ |_| |
-|___/\\___|_|  \\___|\\__, |
-                   |___/ `,
-      tagline: "✨ (you found josh's secret essay essay essay) ✨"
+      art: `    ▲
+   ▲ ▲  _            _     _
+  (_) ___  ___| |__ ( )___
+  | |/ _ \\/ __| '_ \\|// __|
+  | | (_) \\__ \\ | | | \\__ \\
+  | |\\___/|___/_| |_| |___/
+  \\__|
+   ___  ___ ___  __ _ _   _
+  / __|/ __/ __|/ _\` | | | |
+  \\__ \\\\__ \\__ \\ (_| | |_| |
+  |___/|___/___/\\__,_|\\__, |
+                      |___/ `,
+      tagline: "(no save points)"
+    },
+    // Demon Slayer
+    {
+      art: `   _          ╱
+  (_) ___  ___ ___  __ _ _   _
+  | |/ _ \\/ __/ __|/ _\` | | | |
+  | |  __/\\__ \\__ \\ (_| | |_| |
+ _/ |\\___||___/___/\\__,_|\\__, |
+|__/                     |___/ `,
+      tagline: "(writer's block is the real demon)"
+    },
+    // Fullmetal Alchemist
+    {
+      art: `   _    ◉
+  (_) ___  ___ ___  __ _ _   _
+  | |/ _ \\/ __/ __|/ _\` | | | |
+  | |  __/\\__ \\__ \\ (_| | |_| |
+ _/ |\\___||___/___/\\__,_|\\__, |
+|__/           ◉         |___/ `,
+      tagline: "(the first draft requires sacrifice)"
     }
   ];
 
