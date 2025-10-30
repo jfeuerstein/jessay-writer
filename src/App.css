@@ -85,6 +85,16 @@ input::placeholder, textarea::placeholder {
   color: #555;
 }
 
+/* loading state */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: #666;
+}
+
 /* responsive */
 @media (max-width: 768px) {
   .main-content {

@@ -1,68 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Editor.css';
 import RichTextEditor from './RichTextEditor';
 
-function Editor({ onPublish, streak }) {
+function Editor({ onPublish, streak, user, onAuthClick }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [showPublishModal, setShowPublishModal] = useState(false);
   const [publishing, setPublishing] = useState(false);
-  const [titleEasterEgg, setTitleEasterEgg] = useState('');
   const [showStreakCelebration, setShowStreakCelebration] = useState(false);
   const [wordCountHover, setWordCountHover] = useState(false);
   const [clearButtonHover, setClearButtonHover] = useState(false);
   const [wordCountHoverTimer, setWordCountHoverTimer] = useState(null);
   const [clearButtonPressTimer, setClearButtonPressTimer] = useState(null);
-
-  // Special title easter eggs
-  useEffect(() => {
-    const lowerTitle = title.toLowerCase().trim();
-    const specialTitles = {
-      'untitled': '(how original)',
-      'test': '(this is only a test)',
-      'help': '(we all need it sometimes)',
-      'hello': '(world)',
-      'essay': '(that\'s what we do here)',
-      'josh': '(that\'s me!)',
-      'diary': '(dear diary...)',
-      'journal': '(captain\'s log, stardate...)',
-      'thoughts': '(penny for your thoughts?)',
-      'todo': '(to do or not to do)',
-      'untitled essay': '(very meta)',
-      'my essay': '(not mine)',
-      'essay 1': '(there will be more)',
-      'draft': '(version 0.1)',
-      'new essay': '(it certainly is)',
-      'lorem ipsum': '(dolor sit amet)',
-      'the': '(the what?)',
-      'a': '(just one letter? bold choice)',
-      '': '(no thoughts, head empty)',
-      'readme': '(or write me)',
-      'secret': '(shh, don\'t tell anyone)',
-      'confession': '(forgive me, for i have sinned)',
-      'manifesto': '(viva la revolucion)',
-      'poem': '(roses are red...)',
-      'song': '(la la la)',
-      'story': '(once upon a time...)',
-      'chapter 1': '(the beginning)',
-      'note to self': '(don\'t forget)',
-      'ideas': '(good ones, hopefully)',
-      'wisdom': '(with great power...)',
-      'truth': '(you can\'t handle it)',
-      'lies': '(pants on fire)',
-      'rant': '(let it all out)',
-      'vibe': '(check)',
-      'mood': '(big mood)',
-    };
-
-    if (lowerTitle in specialTitles) {
-      setTitleEasterEgg(specialTitles[lowerTitle]);
-    } else if (lowerTitle === '' && title === '') {
-      setTitleEasterEgg('(no thoughts, head empty)');
-    } else {
-      setTitleEasterEgg('');
-    }
-  }, [title]);
 
   const handlePublish = () => {
     if (!title.trim() || !content.trim()) {
@@ -141,11 +90,37 @@ function Editor({ onPublish, streak }) {
       clearTimeout(clearButtonPressTimer);
     }
     setClearButtonHover(false);
+  };
+
   const getWordCount = () => {
     // Strip HTML tags for word count
     const text = content.replace(/<[^>]*>/g, '').trim();
     return text ? text.split(/\s+/).length : 0;
   };
+
+  // Show login prompt if not authenticated
+  if (!user) {
+    return (
+      <div className="editor">
+        <div className="editor-login-prompt">
+          <pre className="login-art">
+{`╔═══════════════════════════════╗
+║  login required to write      ║
+╚═══════════════════════════════╝`}
+          </pre>
+          <p className="login-text">
+            you need to be logged in to create and publish essays.
+          </p>
+          <button onClick={onAuthClick} className="login-button">
+            [ login ]
+          </button>
+          <p className="browse-hint">
+            you can still browse published essays!
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="editor">
@@ -172,14 +147,12 @@ function Editor({ onPublish, streak }) {
           onMouseEnter={handleWordCountMouseEnter}
           onMouseLeave={handleWordCountMouseLeave}
         >
-          {content.trim() ? content.trim().split(/\s+/).length : 0} words
+          {getWordCount()} words
           {wordCountHover && (
             <span className="word-count-tooltip">
               (yes, we're counting)
             </span>
           )}
-        <div className="word-count">
-          {getWordCount()} words
         </div>
       </div>
       

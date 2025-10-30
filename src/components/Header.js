@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Header.css';
 
-function Header({ currentView, setCurrentView }) {
+function Header({ currentView, setCurrentView, user, onAuthClick }) {
   const [logoClicks, setLogoClicks] = useState(0);
   const [showSecret, setShowSecret] = useState(false);
 
@@ -128,6 +128,12 @@ function Header({ currentView, setCurrentView }) {
             onClick={() => setCurrentView('browse')}
           >
             [ browse ]
+          </button>
+          <button
+            className="auth-btn"
+            onClick={onAuthClick}
+          >
+            {user ? `[ ${user.email} ]` : '[ login ]'}
           </button>
         </nav>
       </div>

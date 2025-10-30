@@ -228,15 +228,59 @@
   }
 }
 
+/* Login prompt styles */
+.editor-login-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.login-art {
+  color: #e0e0e0;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.login-text {
+  color: #999;
+  margin: 1rem 0 2rem;
+  max-width: 400px;
+}
+
+.login-button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  background: #222;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-button:hover {
+  background: #333;
+}
+
+.browse-hint {
+  margin-top: 2rem;
+  color: #666;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
 @media (max-width: 768px) {
   .title-input {
     font-size: 1.5rem;
   }
-  
+
   .content-input {
     font-size: 1rem;
   }
-  
+
   .editor-controls {
     flex-wrap: wrap;
   }
