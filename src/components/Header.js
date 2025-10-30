@@ -14,7 +14,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   | |  __/\\__ \\__ \\ (_| | |_| |
  _/ |\\___||___/___/\\__,_|\\__, |
 |__/                     |___/ `,
-      tagline: "(i can use nen to write better essays)"
+      tagline: "(this isn't the hunter exam)"
     },
     // Seinfeld
     {
@@ -33,7 +33,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
 | |\\ \\  _\\__ \\__ \\ (_| | |_| |
 |_/ \\_\\_||___/___/\\__,_|\\__, |
                         |___/ `,
-      tagline: "(master of all four writing styles)"
+      tagline: "(still working on the avatar state)"
     },
     // Stardew Valley
     {
@@ -41,7 +41,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   _ | | __/ __/ __| /_\\ \\ \\ / /
  | || | _|\\__ \\__ \\/ _ \\ \\ V /
   \\__/|___|___/___/_/ \\_\\ |_|  `,
-      tagline: "(just one more essay before bed)"
+      tagline: "(no sprinklers for writer's block)"
     },
     // Minecraft
     {
@@ -49,7 +49,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
 (_)___ ___ ___ __ _ _ _
 | / -_|_-<_-</ _\` | | |
 |_\\___/__/__/\\__,_|_|_|`,
-      tagline: "(crafting words one block at a time)"
+      tagline: "(no creative mode here)"
     },
     // Harry Potter
     {
@@ -57,7 +57,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
      █ █▄  █▄  █▄  █▄█ █ █
 █ █  █ █▄▄ ▄▄█ ▄▄█ █ █ ▀▄▀
  ▀  █▀                     `,
-      tagline: "(expecto essayum!)"
+      tagline: "(they don't teach this at hogwarts)"
     },
     // Into the Spiderverse
     {
@@ -65,7 +65,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
  ┬┌─┐┌─┐┌─┐┌─┐┬ ┬
  │├┤ └─┐└─┐├─┤└┬┘
 └┘└─┘└─┘└─┘┴ ┴ ┴ `,
-      tagline: "(anyone can write an essay)"
+      tagline: "(wrong kind of web)"
     },
     // Zelda: Breath of the Wild
     {
@@ -80,7 +80,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
 \\__ \\\\__ \\__ \\ (_| | |_| |
 |___/|___/___/\\__,_|\\__, |
                     |___/ `,
-      tagline: "(it's dangerous to write alone, take this)"
+      tagline: "(no save points)"
     },
     // Demon Slayer
     {
@@ -90,7 +90,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   | |  __/\\__ \\__ \\ (_| | |_| |
  _/ |\\___||___/___/\\__,_|\\__, |
 |__/                     |___/ `,
-      tagline: "(total concentration: writing breathing)"
+      tagline: "(writer's block is the real demon)"
     },
     // Fullmetal Alchemist
     {
@@ -100,7 +100,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   | |  __/\\__ \\__ \\ (_| | |_| |
  _/ |\\___||___/___/\\__,_|\\__, |
 |__/                     |___/ `,
-      tagline: "(equivalent exchange: words for wisdom)"
+      tagline: "(the first draft requires sacrifice)"
     }
   ];
 
