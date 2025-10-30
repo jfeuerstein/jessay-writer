@@ -6,7 +6,7 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   const [showSecret, setShowSecret] = useState(false);
 
   const logoVariations = [
-    // Original
+    // Hunter x Hunter
     {
       art: `   _
   (_) ___  ___ ___  __ _ _   _
@@ -14,9 +14,9 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   | |  __/\\__ \\__ \\ (_| | |_| |
  _/ |\\___||___/___/\\__,_|\\__, |
 |__/                     |___/ `,
-      tagline: "(its a portmantaeu of josh and essay)"
+      tagline: "(i can use nen to write better essays)"
     },
-    // Variation 1: Spaced out
+    // Seinfeld
     {
       art: `   _
   (_) ___  ___  ___  __ _ _   _
@@ -24,50 +24,50 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
   | | (_) \\__ \\ (__| (_| | |_| |
  _/ |\\___/|___/\\___|\\__,_|\\__, |
 |__/                      |___/ `,
-      tagline: "(j o s h   e s s a y)"
+      tagline: "(an essay about nothing)"
     },
-    // Variation 2: Different style
+    // Avatar: The Last Airbender
     {
       art: ` __ _  ___ ___ ___  __ _ _   _
 |  \\ \\/ _/ __/ __|/ _\` | | | |
 | |\\ \\  _\\__ \\__ \\ (_| | |_| |
 |_/ \\_\\_||___/___/\\__,_|\\__, |
                         |___/ `,
-      tagline: "(minimal mode activated)"
+      tagline: "(master of all four writing styles)"
     },
-    // Variation 3: All caps
+    // Stardew Valley
     {
       art: `     ___ ___ ___ ___   ___   __ __
   _ | | __/ __/ __| /_\\ \\ \\ / /
  | || | _|\\__ \\__ \\/ _ \\ \\ V /
   \\__/|___|___/___/_/ \\_\\ |_|  `,
-      tagline: "(why are we yelling?)"
+      tagline: "(just one more essay before bed)"
     },
-    // Variation 4: Tiny
+    // Minecraft
     {
       art: ` _
 (_)___ ___ ___ __ _ _ _
 | / -_|_-<_-</ _\` | | |
 |_\\___/__/__/\\__,_|_|_|`,
-      tagline: "(smol writer)"
+      tagline: "(crafting words one block at a time)"
     },
-    // Variation 5: Blocky
+    // Harry Potter
     {
       art: `     █ ███ ███ ███  █  █ █
      █ █▄  █▄  █▄  █▄█ █ █
 █ █  █ █▄▄ ▄▄█ ▄▄█ █ █ ▀▄▀
  ▀  █▀                     `,
-      tagline: "(block party mode)"
+      tagline: "(expecto essayum!)"
     },
-    // Variation 6: Matrix-y
+    // Into the Spiderverse
     {
       art: `   ╔╦╗
  ┬┌─┐┌─┐┌─┐┌─┐┬ ┬
  │├┤ └─┐└─┐├─┤└┬┘
 └┘└─┘└─┘└─┘┴ ┴ ┴ `,
-      tagline: "(neo, is that you?)"
+      tagline: "(anyone can write an essay)"
     },
-    // Variation 7: The secret
+    // Zelda: Breath of the Wild
     {
       art: ` _            _     _
 (_) ___  ___| |__ ( )___
@@ -75,17 +75,32 @@ function Header({ currentView, setCurrentView, user, onAuthClick }) {
 | | (_) \\__ \\ | | | \\__ \\
 | |\\___/|___/_| |_| |___/
 \\__|
-     ___ ___ ___ _ __ ___ _   _
- _  / __/ __/ _ \\ '__/ _ \\ | | |
-| | \\__ \\  __/ | |  __/ |_| |
-| | |___/\\___|_|  \\___|\\__, |
-|_|                    |___/
- ___ ___ ___ _ __ ___ _   _
-/ __/ __/ _ \\ '__/ _ \\ | | |
-\\__ \\  __/ | |  __/ |_| |
-|___/\\___|_|  \\___|\\__, |
-                   |___/ `,
-      tagline: "✨ (you found josh's secret essay essay essay) ✨"
+ ___  ___ ___  __ _ _   _
+/ __|/ __/ __|/ _\` | | | |
+\\__ \\\\__ \\__ \\ (_| | |_| |
+|___/|___/___/\\__,_|\\__, |
+                    |___/ `,
+      tagline: "(it's dangerous to write alone, take this)"
+    },
+    // Demon Slayer
+    {
+      art: `   _
+  (_) ___  ___ ___  __ _ _   _
+  | |/ _ \\/ __/ __|/ _\` | | | |
+  | |  __/\\__ \\__ \\ (_| | |_| |
+ _/ |\\___||___/___/\\__,_|\\__, |
+|__/                     |___/ `,
+      tagline: "(total concentration: writing breathing)"
+    },
+    // Fullmetal Alchemist
+    {
+      art: `   _
+  (_) ___  ___ ___  __ _ _   _
+  | |/ _ \\/ __/ __|/ _\` | | | |
+  | |  __/\\__ \\__ \\ (_| | |_| |
+ _/ |\\___||___/___/\\__,_|\\__, |
+|__/                     |___/ `,
+      tagline: "(equivalent exchange: words for wisdom)"
     }
   ];
 
