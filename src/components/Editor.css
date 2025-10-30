@@ -17,6 +17,44 @@
   margin-left: auto;
   color: #666;
   font-size: 0.85rem;
+  position: relative;
+  cursor: default;
+  padding: 0.5rem;
+}
+
+.word-count-tooltip {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  color: #888;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  animation: fadeIn 0.3s ease-in;
+  z-index: 10;
+}
+
+.button-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  color: #888;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  animation: fadeIn 0.3s ease-in;
+  z-index: 10;
+}
+
+.editor-controls button {
+  position: relative;
 }
 
 .editor-container {
@@ -25,19 +63,51 @@
   gap: 1.5rem;
 }
 
+.title-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.title-section:focus-within {
+  border-bottom-color: #e0e0e0;
+}
+
 .title-input {
   font-size: 2rem;
   font-weight: bold;
   border: none;
-  border-bottom: 1px solid #333;
   padding: 0.5rem 0;
   background: transparent;
   color: #e0e0e0;
   font-family: 'Courier New', monospace;
+  flex: 1;
 }
 
 .title-input:focus {
-  border-bottom-color: #e0e0e0;
+  outline: none;
+}
+
+.title-easter-egg {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+  white-space: nowrap;
+  animation: fadeIn 0.3s ease-in;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .content-input {
@@ -100,6 +170,62 @@
 .modal-buttons button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* streak celebration */
+.streak-celebration {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  animation: slideUp 0.5s ease-out;
+}
+
+.streak-content {
+  background: #0a0a0a;
+  border: 2px solid #e0e0e0;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(224, 224, 224, 0.3);
+}
+
+.streak-fire {
+  font-size: 4rem;
+  animation: bounce 0.6s ease-in-out infinite;
+}
+
+.streak-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e0e0e0;
+  margin: 0.5rem 0;
+}
+
+.streak-message {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @media (max-width: 768px) {
