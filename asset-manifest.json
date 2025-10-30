@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/jessay-writer/static/css/main.e371ffc9.css",
-    "main.js": "/jessay-writer/static/js/main.4985111e.js",
+    "main.css": "/jessay-writer/static/css/main.5f8e7c2b.css",
+    "main.js": "/jessay-writer/static/js/main.26190487.js",
     "index.html": "/jessay-writer/index.html",
-    "main.e371ffc9.css.map": "/jessay-writer/static/css/main.e371ffc9.css.map",
-    "main.4985111e.js.map": "/jessay-writer/static/js/main.4985111e.js.map"
+    "main.5f8e7c2b.css.map": "/jessay-writer/static/css/main.5f8e7c2b.css.map",
+    "main.26190487.js.map": "/jessay-writer/static/js/main.26190487.js.map"
   },
   "entrypoints": [
-    "static/css/main.e371ffc9.css",
-    "static/js/main.4985111e.js"
+    "static/css/main.5f8e7c2b.css",
+    "static/js/main.26190487.js"
   ]
 }
