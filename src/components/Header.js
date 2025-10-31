@@ -161,7 +161,7 @@ ______/'___________________________________________/'____________
             className="auth-btn"
             onClick={onAuthClick}
           >
-            {user ? `[ ${user.email} ]` : '[ login ]'}
+            {user ? `[ ${user.email.slice(0, 4)} ]` : '[ login ]'}
           </button>
         </nav>
       </div>
