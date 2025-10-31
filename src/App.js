@@ -9,6 +9,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import {
   collection,
   addDoc,
+  updateDoc,
   deleteDoc,
   doc,
   query,
@@ -131,6 +132,30 @@ function App() {
     }
   };
 
+  const updateEssay = async (id, updatedData) => {
+    if (!user) {
+      setShowAuth(true);
+      return;
+    }
+
+    try {
+      const essayRef = doc(db, 'essays', id);
+      await updateDoc(essayRef, {
+        title: updatedData.title,
+        content: updatedData.content,
+        updatedAt: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error('Error updating essay:', error);
+      // Fallback to localStorage
+      const updatedEssays = essays.map(e =>
+        e.id === id ? { ...e, ...updatedData, updatedAt: new Date().toISOString() } : e
+      );
+      setEssays(updatedEssays);
+      localStorage.setItem('essays', JSON.stringify(updatedEssays));
+    }
+  };
+
   const deleteEssay = async (id) => {
     if (!user) {
       setShowAuth(true);
@@ -176,6 +201,7 @@ function App() {
           <Browse
             essays={essays}
             onDelete={deleteEssay}
+            onUpdate={updateEssay}
             user={user}
           />
         )}
